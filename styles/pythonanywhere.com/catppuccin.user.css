@@ -1,0 +1,591 @@
+/* ==UserStyle==
+@name pythonanywhere.com Catppuccin
+@namespace github.com/catppuccin/userstyles/styles/<pythonanywhere.com
+@homepageURL https://github.com/catppuccin/userstyles/tree/main/styles/pythonanywhere.com
+@version 0.0.1
+@updateURL https://github.com/catppuccin/userstyles/raw/main/styles/<port-name>/catppuccin.user.css
+@supportURL https://github.com/catppuccin/userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Apythonanywhere.com
+@description Soothing pastel theme for <port-name>
+@author Catppuccin
+@license MIT
+
+@preprocessor less
+@var select lightFlavor "Light Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
+@var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain('pythonanywhere.com') {
+  /* This section applies the light/dark themes automatically based on the user's system theme.
+     Use the below example CSS to start if the website you are theming doesn't have a light/dark mode toggle.
+     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/brave-search/catppuccin.user.css#L16-L29.
+  */
+  @media (prefers-color-scheme: light) {
+    :root {
+      #catppuccin(@lightFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #catppuccin(@darkFlavor, @accentColor);
+    }
+  }
+
+  /* If the website you are theming *does* have a light/dark mode toggle,
+     you can conditionally enable light/dark flavors by targeting whatever
+     attribute that website uses to indicate the theme. *The example below gives you an idea of what
+     to look for. The website you are theming may use a class-based approach (e.g. :root.theme-dark),
+     or any of the myriad of other methods like this.*
+     Use the below example CSS to start if this is the case.
+     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/youtube/catppuccin.user.css#L21-L30.
+  */
+  :root[data-theme="dark"] {
+    #catppuccin(@darkFlavor, @accentColor);
+  }
+  :root[data-theme="light"] {
+    #catppuccin(@lightFlavor, @accentColor);
+  }
+
+  #catppuccin(@lookup, @accent) {
+    @rosewater: @catppuccin[@@lookup][@rosewater];
+    @flamingo: @catppuccin[@@lookup][@flamingo];
+    @pink: @catppuccin[@@lookup][@pink];
+    @mauve: @catppuccin[@@lookup][@mauve];
+    @red: @catppuccin[@@lookup][@red];
+    @maroon: @catppuccin[@@lookup][@maroon];
+    @peach: @catppuccin[@@lookup][@peach];
+    @yellow: @catppuccin[@@lookup][@yellow];
+    @green: @catppuccin[@@lookup][@green];
+    @teal: @catppuccin[@@lookup][@teal];
+    @sky: @catppuccin[@@lookup][@sky];
+    @sapphire: @catppuccin[@@lookup][@sapphire];
+    @blue: @catppuccin[@@lookup][@blue];
+    @lavender: @catppuccin[@@lookup][@lavender];
+    @text: @catppuccin[@@lookup][@text];
+    @subtext1: @catppuccin[@@lookup][@subtext1];
+    @subtext0: @catppuccin[@@lookup][@subtext0];
+    @overlay2: @catppuccin[@@lookup][@overlay2];
+    @overlay1: @catppuccin[@@lookup][@overlay1];
+    @overlay0: @catppuccin[@@lookup][@overlay0];
+    @surface2: @catppuccin[@@lookup][@surface2];
+    @surface1: @catppuccin[@@lookup][@surface1];
+    @surface0: @catppuccin[@@lookup][@surface0];
+    @base: @catppuccin[@@lookup][@base];
+    @mantle: @catppuccin[@@lookup][@mantle];
+    @crust: @catppuccin[@@lookup][@crust];
+    @accent-color: @catppuccin[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    // @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+      :root ::selection {
+        background-color: rgba(203, 166, 247, 0.3);
+      }
+      :root input::placeholder,
+      :root textarea::placeholder {
+        color: @subtext0 !important;
+      }
+      :root body.LightsOut {
+        --border-color: @base;
+        --color: @subtext0;
+        --color-emphasis: @text;
+        --hover-bg-color: @overlay0;
+      }
+      :root body,
+      :root .PageContainer,
+      :root #placeholder {
+        background-color: @base !important;
+        color: @text;
+      }
+      :root #ScriptLoadFailure span {
+        color: @text;
+      }
+      :root [style*="scrollbar-color: rgb(62, 65, 68) rgb(22, 24, 28)"] {
+        scrollbar-color: @mauve transparent !important;
+        scrollbar-width: thin;
+      }
+      :root [data-testid="primaryColumn"],
+      :root .r-kemksi {
+        background-color: @base;
+      }
+      :root .r-cqee49 {
+        color: @base;
+      }
+
+      :root .r-1nao33i {
+        color: @text;
+      }
+      :root .r-jwli3a {
+        color: @mantle;
+      }
+      :root .r-jwli3a:has(
+            path[d="M3.693 21.707l-1.414-1.414 2.429-2.429c-2.479-2.421-3.606-5.376-3.658-5.513l-.131-.352.131-.352c.133-.353 3.331-8.648 10.937-8.648 2.062 0 3.989.621 5.737 1.85l2.556-2.557 1.414 1.414L3.693 21.707zm-.622-9.706c.356.797 1.354 2.794 3.051 4.449l2.417-2.418c-.361-.609-.553-1.306-.553-2.032 0-2.206 1.794-4 4-4 .727 0 1.424.192 2.033.554l2.263-2.264C14.953 5.434 13.512 5 11.986 5c-5.416 0-8.258 5.535-8.915 7.001zM11.986 10c-1.103 0-2 .897-2 2 0 .178.023.352.067.519l2.451-2.451c-.167-.044-.341-.067-.519-.067zm10.951 1.647l.131.352-.131.352c-.133.353-3.331 8.648-10.937 8.648-.709 0-1.367-.092-2-.223v-2.047c.624.169 1.288.27 2 .27 5.415 0 8.257-5.533 8.915-7-.252-.562-.829-1.724-1.746-2.941l1.438-1.438c1.53 1.971 2.268 3.862 2.33 4.027z"]
+          ) {
+        color: @text;
+      }
+      :root .r-1kqtdi0,
+      :root .r-1roi411 {
+        border-color: @overlay0;
+      }
+      :root .r-1igl3o0 {
+        border-bottom-color: @overlay0;
+      }
+      :root .r-2sztyj {
+        border-top-color: @overlay0;
+      }
+      :root .r-1aihyag {
+        border-right-color: @overlay0;
+      }
+      :root .r-1wyyjkm {
+        border-left-color: @subtext0;
+      }
+      :root .r-1ccsd61,
+      :root .r-xzxzvz {
+        border-color: @surface2;
+      }
+      :root .r-gu4em3,
+      :root .r-1bnu78o,
+      :root .r-z32n2g,
+      :root .r-1m3jxhj {
+        background-color: @overlay0;
+      }
+      :root .r-1xc7w19 {
+        border-color: @base;
+      }
+      :root .r-1pbtemp {
+        border-right-color: @mauve;
+      }
+      :root .r-vhj8yc {
+        border-color: @mauve;
+      }
+      :root .r-1bwzh9t {
+        color: @subtext0;
+      }
+      :root .r-g2wdr4 {
+        background-color: @mantle;
+      }
+      :root .r-14wv3jr {
+        border-color: @mantle;
+      }
+      :root .r-l5o3uw {
+        background-color: @mauve;
+      }
+      :root .r-l5o3uw .r-jwli3a {
+        color: @crust;
+      }
+      :root .r-1vtznih {
+        background-color: #b077f3;
+      }
+      :root .r-1vtznih .r-jwli3a {
+        color: @crust;
+      }
+      :root .r-yuvema {
+        background-color: #a260f1;
+      }
+      :root .r-yuvema .r-jwli3a {
+        color: @crust;
+      }
+      :root .r-r18ze4 {
+        background-color: rgba(203, 166, 247, 0.2);
+      }
+      :root .r-jc7xae {
+        background-color: #bcc8f0;
+      }
+      :root .r-6wtuen {
+        background-color: #acbbed;
+      }
+      :root .r-1pr99xn {
+        background-color: @surface1;
+      }
+      :root .r-1eltapf {
+        background-color: rgba(116, 199, 236, 0.1);
+      }
+      :root .r-eok2q2 {
+        background-color: rgba(203, 166, 247, 0.6);
+      }
+      :root .r-9cip40 {
+        box-shadow: @mauve 0 0 0 1px;
+      }
+      :root .r-1blqq69 {
+        border-color: @mauve;
+      }
+      :root .r-qazpri {
+        color: @subtext0;
+      }
+      @keyframes r-1wvy3k1 {
+        0% {
+          box-shadow: rgba(203, 166, 247, 0.4) 0;
+        }
+        100% {
+          box-shadow: rgba(203, 166, 247, 0) 0;
+        }
+      }
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"] {
+        background-image: linear-gradient(61.63deg, @blue -15.05%, @mauve 104.96%) !important;
+      }
+      :root .draftjs-styles_0 .public-DraftEditorPlaceholder-root {
+        color: @overlay0;
+      }
+      :root .r-rgqbpe {
+        background-color: rgba(137, 180, 250, 0.1);
+      }
+      :root .r-s224ru {
+        background-color: @green;
+      }
+      :root .r-h7o7i8 {
+        background-color: rgba(166, 227, 161, 0.1);
+      }
+      :root .r-4nw3r4,
+      :root .r-1dgebii {
+        background-color: @red;
+      }
+      :root .r-b5kvu3 {
+        border-color: @red;
+      }
+      :root .r-qqmkd0 {
+        background-color: rgba(243, 139, 168, 0.1);
+      }
+      :root .r-12d83nn {
+        background-color: #ee5d85;
+      }
+      :root .r-oybae9 {
+        background-color: #ec4674;
+      }
+      :root .r-11mg6pl {
+        border-color: @crust;
+      }
+      :root .r-11z020y {
+        background-color: rgba(179, 156, 206, 0.12);
+      }
+      :root [fill="rgb(249,22,127)"],
+      :root [fill="rgb(222,45,108)"],
+      :root g[clip-path="url(#__lottie_element_562)"] path,
+      :root [style="color: rgb(249, 24, 128);"] [viewBox="0 0 24 24"] path {
+        fill: @red !important;
+      }
+      :root .r-1krxqcr {
+        background-color: rgba(243, 139, 168, 0.1);
+      }
+      :root .r-uuique {
+        background-color: rgba(243, 139, 168, 0.2);
+      }
+      :root .r-vkub15,
+      :root .r-9l7dzd {
+        color: @red;
+      }
+      :root .r-1cvl2hr {
+        color: @mauve;
+      }
+      :root .r-o6sn0f {
+        color: @green;
+      }
+      :root .r-15azkrj {
+        background-color: rgba(166, 227, 161, 0.1);
+      }
+      :root .r-1x669os {
+        background-color: rgba(166, 227, 161, 0.2);
+      }
+      :root [data-testid="card.wrapper"] [d="M21.04 1.54L17.5 5.09c-.04-.02-.08-.03-.13-.04L14.3 3H9.7l-3 2H5C3.62 5 2.5 6.12 2.5 7.5v11c0 .46.12.88.34 1.25l-1.3 1.29 1.42 1.42 19.5-19.5-1.42-1.42zM13.7 5l2.33 1.56-2 1.99C13.44 8.2 12.74 8 12 8c-2.21 0-4 1.79-4 4 0 .74.2 1.44.55 2.03L4.5 18.09V7.5c0-.28.22-.5.5-.5h2.3l3-2h3.4zM12 10c.18 0 .35.02.52.07l-2.45 2.45c-.05-.17-.07-.34-.07-.52 0-1.1.9-2 2-2zm7 11H7.24l2-2H19c.28 0 .5-.22.5-.5V9h2v9.5c0 1.38-1.12 2.5-2.5 2.5z"] {
+        color: @overlay0;
+      }
+      :root .r-n94g0g {
+        background-color: rgba(205, 214, 244, 0.3);
+      }
+      :root .r-z9i421 {
+        background-color: rgba(205, 214, 244, 0.27);
+      }
+      :root .r-19130f6 {
+        background-color: @crust;
+      }
+      :root .r-l8tqsx {
+        background-color: rgba(205, 214, 244, 0.1);
+      }
+      :root .r-3gvs5h {
+        background-color: @subtext0;
+      }
+      :root .r-1fkb3t2 {
+        background-color: @surface1;
+      }
+      :root .r-jwli3a {
+        color: @text;
+      }
+      :root .r-1kwlb9n {
+        background-color: rgba(243, 139, 168, 0.12);
+      }
+      :root [style*="https://abs.twimg.com/responsive-web/client-web/background-premiumplus-web"] {
+        background-image: none !important;
+        background-color: @overlay0;
+      }
+      :root [stroke="#2F3336" i] {
+        stroke: @surface2 !important;
+      }
+      :root [stroke="#1D9BF0" i],
+      :root [style*="stroke: rgb(29, 155, 240)"] {
+        stroke: @mauve !important;
+      }
+      :root [stroke="#FFD400" i] {
+        stroke: @yellow !important;
+      }
+      :root [fill="#829AAB" i] {
+        fill: #9399b2 !important;
+      }
+      :root [fill="#1DA1F2" i] {
+        fill: #20a3bb !important;
+      }
+      :root [fill="#78C6EE" i] {
+        fill: #89dceb !important;
+      }
+      :root [stop-color="#f4e72a" i],
+      :root [stop-color="#cd8105" i],
+      :root [stop-color="#cb7b00" i],
+      :root [stop-color="#f4ec26" i],
+      :root [stop-color="#f9e87f" i],
+      :root [stop-color="#e2b719" i] {
+        stop-color: @yellow !important;
+      }
+      :root [fill="#d18800" i] {
+        fill: @yellow !important;
+      }
+      :root [style*="border-color: rgb(83, 100, 113)"] {
+        border-color: @surface1 !important;
+      }
+      :root [style*="border-color: rgb(51, 54, 57)"] {
+        border-color: @overlay0 !important;
+      }
+      :root [style*="border-color: rgb(103, 7, 15)"] {
+        border-color: rgba(243, 139, 168, 0.5) !important;
+      }
+      :root [style*="border-color: rgb(29, 155, 240)"] {
+        border-color: @mauve !important;
+      }
+      :root [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root [style*="color: rgb(239, 243, 244)"]:not( [style*="background-color: rgb(239, 243, 244)"]),
+      :root [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]) {
+        color: @text !important;
+      }
+      :root [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]) input::placeholder {
+        color: @subtext1 !important;
+      }
+      :root [style*="color: rgb(113, 118, 123)"]:not( [style*="background-color: rgb(113, 118, 123)"]),
+      :root [style*="color: rgb(182, 185, 188)"]:not( [style*="background-color: rgb(182, 185, 188)"]) {
+        color: @subtext0 !important;
+      }
+      :root [style*="color: rgb(0, 186, 124)"]:not( [style*="background-color: rgb(0, 186, 124)"]) {
+        color: @green !important;
+      }
+      :root [style*="color: rgb(249, 24, 128)"]:not( [style*="background-color: rgb(249, 24, 128)"]),
+      :root [style*="color: rgb(244, 33, 46)"]:not( [style*="background-color: rgb(244, 33, 46)"]) {
+        color: @red !important;
+      }
+      :root [style*="color: rgb(250, 68, 152)"]:not( [style*="background-color: rgb(250, 68, 152)"]) {
+        color: #f5c2e7 !important;
+      }
+      :root [style*="color: rgb(255, 212, 0)"]:not( [style*="background-color: rgb(255, 212, 0)"]) {
+        color: @yellow !important;
+      }
+      :root [style*="color: rgb(120, 86, 255)"]:not( [style*="background-color: rgb(120, 86, 255)"]) {
+        color: @mauve !important;
+      }
+      :root [style*="color: rgb(255, 122, 0)"]:not( [style*="background-color: rgb(255, 122, 0)"]) {
+        color: #fab387 !important;
+      }
+      :root [style*="color: rgb(29, 155, 240)"]:not( [style*="background-color: rgb(29, 155, 240)"]) {
+        color: @mauve !important;
+      }
+      :root [style*="background-color: rgb(142, 205, 248)"] {
+        background-color: #e6d5fb !important;
+      }
+      :root [style*="background-color: rgb(2, 17, 61)"] {
+        background-color: rgba(203, 166, 247, 0.15) !important;
+      }
+      :root [style*="background-color: rgba(255, 255, 255, 0.25)"] {
+        background-color: rgba(205, 214, 244, 0.25) !important;
+      }
+      :root [style*="background-color: rgb(147, 147, 147)"] {
+        background-color: @overlay0 !important;
+      }
+      :root [style*="background-color: rgb(147, 147, 147)"] + [style*="background-color: rgb(250, 250, 250)"] {
+        background-color: @text !important;
+      }
+      :root [style*="background-color: rgb(29, 155, 240)"] {
+        background-color: @mauve !important;
+      }
+      :root [style*="background-color: rgb(29, 155, 240)"] [style*="color: rgb(255, 255, 255)"] {
+        color: @crust !important;
+      }
+      :root [style*="background-color: rgb(239, 243, 244)"] {
+        background-color: @text !important;
+      }
+      :root [style*="background-color: rgb(239, 243, 244)"] [style*="color: rgb(15, 20, 25)"] {
+        color: @crust !important;
+      }
+      :root [style*="background-color: rgb(244, 33, 46)"] {
+        background-color: @red !important;
+      }
+      :root [style*="background-color: rgb(244, 33, 46)"] [style*="color: rgb(255, 255, 255)"] {
+        color: @crust !important;
+      }
+      :root [style*="background-color: rgb(0, 0, 0)"],
+      :root [style*="background-color: #000"] {
+        background-color: @base !important;
+      }
+      :root [style*="background-color: rgba(15, 20, 25, 0.75)"] {
+        background-color: rgba(17, 17, 27, 0.75) !important;
+      }
+      :root [style*="background-color: rgba(15, 20, 25, 0.75)"] [style*="color: rgb(255, 255, 255)"] svg {
+        color: @text !important;
+      }
+      :root .r-l5o3uw [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-1vtznih [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-4nw3r4 [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-12d83nn [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-oybae9 [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-yuvema [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-3gvs5h [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"] [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-l5o3uw[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-1vtznih[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-4nw3r4[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-12d83nn[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-oybae9[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-yuvema[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-3gvs5h[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"][style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-l5o3uw [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-1vtznih [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-4nw3r4 [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-12d83nn [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-oybae9 [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-yuvema [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-3gvs5h [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"] [style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-l5o3uw[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-1vtznih[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-4nw3r4[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-12d83nn[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-oybae9[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-yuvema[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-3gvs5h[style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"][style*="color: rgb(231, 233, 234)"]:not( [style*="background-color: rgb(231, 233, 234)"]),
+      :root .r-l5o3uw [color="white"],
+      :root .r-1vtznih [color="white"],
+      :root .r-4nw3r4 [color="white"],
+      :root .r-12d83nn [color="white"],
+      :root .r-oybae9 [color="white"],
+      :root .r-yuvema [color="white"],
+      :root .r-3gvs5h [color="white"],
+      :root [style="background-image: linear-gradient(61.63deg, rgb(45, 66, 255) -15.05%, rgb(156, 99, 250) 104.96%);"] [color="white"] {
+        color: @crust !important;
+      }
+      :root [data-testid="videoComponent"]:not(.r-4nw3r4) [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-loe9s5 [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-drfeu3:has( [style="background-color: rgba(255, 255, 255, 0.25); border-color: rgba(0, 0, 0, 0); backdrop-filter: blur(4px);"]) [style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root [data-testid="videoComponent"]:not(.r-4nw3r4)[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-loe9s5[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root .r-drfeu3:has( [style="background-color: rgba(255, 255, 255, 0.25); border-color: rgba(0, 0, 0, 0); backdrop-filter: blur(4px);"])[style*="color: rgb(255, 255, 255)"]:not( [style*="background-color: rgb(255, 255, 255)"]),
+      :root [data-testid="videoComponent"]:not(.r-4nw3r4) .r-jwli3a,
+      :root .r-loe9s5 .r-jwli3a,
+      :root .r-drfeu3:has( [style="background-color: rgba(255, 255, 255, 0.25); border-color: rgba(0, 0, 0, 0); backdrop-filter: blur(4px);"]) .r-jwli3a {
+        color: #fff !important;
+      }
+      :root .r-eff69c {
+        background-color: #bd8ff5;
+      }
+      :root .r-eff69c [style*="color: rgb(255, 255, 255)"] {
+        color: @crust !important;
+      }
+      :root [data-testid$="-follow"] [style*="color: rgb(15, 20, 25)"] {
+        color: @crust !important;
+      }
+      :root a[aria-label^="Translated from"][aria-label$="by Google"] svg path {
+        fill: @text !important;
+      }
+    // }
+    // @media (prefers-color-scheme: dark) {
+      :root #session a,
+      :root #session input,
+      :root #session button {
+        background: @overlay0;
+        color: @subtext0;
+      }
+      :root #session .user-menu a:focus,
+      :root #session .user-menu a:hover,
+      :root #session .user-menu button:focus,
+      :root #session .user-menu button:hover,
+      :root #session .user-menu input:focus,
+      :root #session .user-menu input:hover {
+        color: @crust;
+        background-color: @mauve;
+      }
+      :root .notice,
+      :root .notice p,
+      :root h2 {
+        color: @subtext1;
+      }
+      :root .notice.error {
+        background: rgba(243, 139, 168, 0.2);
+        border-color: rgba(243, 139, 168, 0.25);
+      }
+      :root .ResponsiveLayout--Night .PageContainer {
+        background-color: @base;
+      }
+      :root .list-explanation {
+        color: @subtext0;
+      }
+      :root .ResponsiveLayout--Night .list-btn:first-of-type {
+        border-top-color: @mantle;
+      }
+      :root .ResponsiveLayout--Night .list-btn:hover {
+        background-color: @mantle;
+      }
+      :root .submit-btn {
+        background-color: @mauve;
+        color: @crust;
+        border-color: #b077f3;
+      }
+      :root .submit-btn:hover,
+      :root .redirect-btn:hover {
+        background-color: #b077f3;
+      }
+      :root .block-btn {
+        color: @maroon;
+        border-color: @maroon;
+      }
+      :root .mute-btn,
+      :root .unfollow-btn,
+      :root .email-report-btn {
+        color: @mauve;
+        border-color: @mauve;
+      }
+      :root .list-btn {
+        border-color: @surface1;
+      }
+      :root .list-btn:first-of-type {
+        border-top-color: @surface1;
+      }
+      :root .list-btn:hover {
+        background-color: @overlay0;
+      }
+      :root .js #session .user-menu {
+        background-color: @overlay0;
+      }
+      :root .dropdown-caret .caret-outer,
+      :root .dropdown-caret .caret-inner {
+        border-bottom-color: @overlay0;
+      }
+    // }
+  }
+}
+
+/* prettier-ignore */
+@catppuccin: {
+  @latte:     { @rosewater: #dc8a78; @flamingo: #dd7878; @pink: #ea76cb; @mauve: #8839ef; @red: #d20f39; @maroon: #e64553; @peach: #fe640b; @yellow: #df8e1d; @green: #40a02b; @teal: #179299; @sky: #04a5e5; @sapphire: #209fb5; @blue: #1e66f5; @lavender: #7287fd; @text: #4c4f69; @subtext1: #5c5f77; @subtext0: #6c6f85; @overlay2: #7c7f93; @overlay1: #8c8fa1; @overlay0: #9ca0b0; @surface2: #acb0be; @surface1: #bcc0cc; @surface0: #ccd0da; @base: #eff1f5; @mantle: #e6e9ef; @crust: #dce0e8; };
+  @frappe:    { @rosewater: #f2d5cf; @flamingo: #eebebe; @pink: #f4b8e4; @mauve: #ca9ee6; @red: #e78284; @maroon: #ea999c; @peach: #ef9f76; @yellow: #e5c890; @green: #a6d189; @teal: #81c8be; @sky: #99d1db; @sapphire: #85c1dc; @blue: #8caaee; @lavender: #babbf1; @text: #c6d0f5; @subtext1: #b5bfe2; @subtext0: #a5adce; @overlay2: #949cbb; @overlay1: #838ba7; @overlay0: #737994; @surface2: #626880; @surface1: #51576d; @surface0: #414559; @base: #303446; @mantle: #292c3c; @crust: #232634; };
+  @macchiato: { @rosewater: #f4dbd6; @flamingo: #f0c6c6; @pink: #f5bde6; @mauve: #c6a0f6; @red: #ed8796; @maroon: #ee99a0; @peach: #f5a97f; @yellow: #eed49f; @green: #a6da95; @teal: #8bd5ca; @sky: #91d7e3; @sapphire: #7dc4e4; @blue: #8aadf4; @lavender: #b7bdf8; @text: #cad3f5; @subtext1: #b8c0e0; @subtext0: #a5adcb; @overlay2: #939ab7; @overlay1: #8087a2; @overlay0: #6e738d; @surface2: #5b6078; @surface1: #494d64; @surface0: #363a4f; @base: #24273a; @mantle: #1e2030; @crust: #181926; };
+  @mocha:     { @rosewater: #f5e0dc; @flamingo: #f2cdcd; @pink: #f5c2e7; @mauve: #cba6f7; @red: #f38ba8; @maroon: #eba0ac; @peach: #fab387; @yellow: #f9e2af; @green: #a6e3a1; @teal: #94e2d5; @sky: #89dceb; @sapphire: #74c7ec; @blue: #89b4fa; @lavender: #b4befe; @text: #cdd6f4; @subtext1: #bac2de; @subtext0: #a6adc8; @overlay2: #9399b2; @overlay1: #7f849c; @overlay0: #6c7086; @surface2: #585b70; @surface1: #45475a; @surface0: #313244; @base: #1e1e2e; @mantle: #181825; @crust: #11111b; };
+}
+
+// vim:ft=less

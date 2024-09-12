@@ -96,12 +96,16 @@
 .text-white {
   color: @text;
 }
+
     .text-\[\#565656\] {
       color: @subtext0;
     }
-    .styles_container__ZHlJa[style*="#ebebeb"], .styles_widget__content__GAekn, .styles_widget___JC_t {
+    //.styles_widget__content__GAekn, .styles_widget___JC_t
+    .styles_container__ZHlJa[style*="#ebebeb"],.styles_widget__content__GAekn, .styles_widget___JC_t {
       background: @surface0;
       color: @text;
+      --bg: @surface0 !important;
+
     }
     .ProseMirror {
       color: @text;
@@ -131,15 +135,16 @@
       fill: @subtext0;
     }
 
-    .styles_host__zTVRc, .styles_handle__GaWZ1  {
+    .styles_host__zTVRc, .styles_handle__GaWZ1,.styles_handle__IT1JE,.styles_handle__wuHSX  {
       color: @text;
     }
-    .text-black\/60 {
+    .text-black\/60, .text-black\/40 {
       color: @text;
     }
     text[fill="rgba(0,0,0,0.4)"] {
       fill: @subtext0;
     }
+
     // github charts
     rect[fill="#ebedf0"] {
 fill: @text;
@@ -237,7 +242,7 @@ color: @text;
     .bg-\[\#FAFAFA\] {
 background-color: @surface0;
     }
-    .styles_overlay-left__zw7ZD, .styles_overlay-right__0Lknb {
+    .styles_overlay-left__zw7ZD, .styles_overlay-right__0Lknb,.big-gradient-right,.big-gradient-left {
       background: unset;
     }
     .styles_button__sP771.styles_button--variant-primary-blue__VLVQz {
@@ -263,7 +268,126 @@ background-color: @surface0;
     // looks cooler
     background: none !important;
 
+
    }
+   // login page & register page & reset password
+   .styles_input-group__content__Nvkj8 {
+    background-color: @surface0;
+   }
+   .styles_button__sP771 {
+    color: @text;
+    background-color: @surface1;
+   }
+   .text-action-green {
+    color: darken(@green,10%);
+   }
+   .bg-\[\#F5F5F5\] {
+background-color: @surface1;
+   }
+   .text-neutral-foreground {
+    color: @text;
+   }
+  //  /home/explore & /jointheteam
+  .home-link-top {
+    background-color: @surface0;
+    color: @text;
+  }
+  .tabs-menu { 
+background-color: @surface0;
+color: @text;
+  }
+  .link-block-339 {
+    background-color: darken(@accent-color, 10%);
+    color: @text;
+  }
+  .nav-link {
+    color: darken(@subtext0, 5%)
+  }
+  .nav-link:hover {
+    color: @subtext0
+  }
+  .body-5, .body-4, .body {
+    background-color: @base;
+    color: @text;
+  }
+  .text-block-19 {
+    color: @text;
+  }
+  .category-tab-title {
+    color: @text;
+  }
+  .bento-link-preview-new {
+    background-color: @surface1;
+    color: @text;
+  }
+  .page-or-file-title, .text-block-26 {
+    color: @text;
+  }
+  .text-field-3, .text-block-18,.bento-username, .bento-text-container {
+    background-color: @surface0;
+    color: @text;
+  }
+  .sidebar-title-container {
+    background-color: @base;
+    color: @text;
+  }
+  .about-bento {
+    background-color: @surface0;
+    color:@text;
+  }
+  .about-text {
+    color:@text;
+  }
+  .click-area {
+    color: darken(@accent-color, 10%);
+    background-color: @surface1;
+  }
+  .join-button-container .button {
+    background-color: darken(@accent-color, 10%);
+    color: @text;
+  }
+  .faster-button, .slower-button {
+    background-color: @surface0;
+  }
+  img[class*="image-"], .background-video {
+    border-color: @surface0;
+  }
+  // main page - TBD (may be deleted if to hard)
+  *[class*="heading-"] {
+    color: @text;
+  }
+  .heading-14 {
+    color: @subtext0;
+  }
+  .phbanner:hover {
+    background-color: darken(@accent-color, 5%);
+  }
+  .phbanner {
+    background-color: darken(@accent-color, 10%);
+  }
+  .link-block-340 {
+    background-color: darken(@accent-color, 10%);
+  }
+  .desktop-video {
+    box-shadow: none;
+  }
+  .link-block-341 {
+    background-color: @surface0;
+  }
+  .text-block-29 {
+    color: @text;
+  }
+  .fade-out,.fade-out-bottom,.fade-out-top {
+    background-image: unset;
+    // background-image: linear-gradient(rgba(255,255,255,0),@accent-color 64%,@text 90%,@text);
+  }
+  .gradient-right,.gradient-left {
+    background: unset;
+  }
+  .container-area {
+  background-color: @surface0;
+  }
+  
   }
 
 }
